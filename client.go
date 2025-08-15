@@ -2,28 +2,76 @@ package kinde
 
 import (
 	"context"
+	"fmt"
+	"net/http"
+	"net/url"
+	"os"
+	"strings"
 
-	"github.com/axatol/kinde-go/api/apis"
-	"github.com/axatol/kinde-go/api/applications"
-	"github.com/axatol/kinde-go/api/permissions"
-	"github.com/axatol/kinde-go/internal/client"
+	"github.com/axatol/kinde-go/pkg/api"
+	"golang.org/x/oauth2"
+	"golang.org/x/oauth2/clientcredentials"
 )
 
-type Client struct {
-	client client.Client
-
-	APIs         *apis.Client
-	Applications *applications.Client
-	Permissions  *permissions.Client
+type ClientOptions struct {
+	Domain       string
+	Audience     string
+	ClientID     string
+	ClientSecret string
+	Scopes       []string
 }
 
-func New(ctx context.Context, options *client.ClientOptions) Client {
-	client := client.New(ctx, options)
-
-	return Client{
-		client:       client,
-		APIs:         apis.New(client),
-		Applications: applications.New(client),
-		Permissions:  permissions.New(client),
+func ClientOptionsFromEnv() *ClientOptions {
+	return &ClientOptions{
+		Domain:       os.Getenv("KINDE_DOMAIN"),
+		Audience:     os.Getenv("KINDE_AUDIENCE"),
+		ClientID:     os.Getenv("KINDE_CLIENT_ID"),
+		ClientSecret: os.Getenv("KINDE_CLIENT_SECRET"),
+		Scopes:       strings.Fields(os.Getenv("KINDE_SCOPES")),
 	}
+}
+
+type Client struct {
+	api.ClientWithResponsesInterface
+	Client *http.Client
+}
+
+func New(ctx context.Context, options *ClientOptions) (*Client, error) {
+	if options == nil {
+		options = ClientOptionsFromEnv()
+	}
+
+	if options.Domain == "" ||
+		options.Audience == "" ||
+		options.ClientID == "" ||
+		options.ClientSecret == "" {
+		return nil, fmt.Errorf("missing required Kinde client options")
+	}
+
+	oauth2Config := clientcredentials.Config{
+		ClientID:       options.ClientID,
+		ClientSecret:   options.ClientSecret,
+		TokenURL:       options.Domain + "/oauth/token",
+		EndpointParams: url.Values{"audience": {options.Audience}},
+		AuthStyle:      oauth2.AuthStyleInParams,
+		Scopes:         options.Scopes,
+	}
+
+	authenticatedClient := oauth2Config.Client(ctx)
+
+	apiClient, err := api.NewClientWithResponses(
+		options.Domain,
+		api.WithHTTPClient(oauth2Config.Client(ctx)),
+	)
+
+	if err != nil {
+		return nil, err
+	}
+
+	client := &Client{
+		Client:                       authenticatedClient,
+		ClientWithResponsesInterface: apiClient,
+	}
+
+	return client, nil
 }

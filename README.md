@@ -6,8 +6,9 @@ Kinde golang client
 
 ### prerequisites
 
-1. Create a M2M application and save the domain, client ID, and client secret
-2. Authorise the application with the Kinde Management API and allow the relevant scopes
+1. Create a Machine to machine (M2M) application and save the domain, client ID, and client secret
+2. Navigate to the Kinde Management API and save the audience
+3. Authorise the M2M application with the Kinde Management API and allow the relevant scopes
 
 ### quickstart
 
@@ -22,17 +23,17 @@ func main() {
   // - KINDE_AUDIENCE
   // - KINDE_CLIENT_ID
   // - KINDE_CLIENT_SECRET
-  client := kinde.New(context.Background(), nil)
+  client, _ := kinde.New(context.TODO(), nil)
 
-  // or override some configuration, the unspecified values are loaded from the
-  // environment
-  client = kinde.New(
-    context.Background(),
-    kinde.NewClientOptions().
-      WithClientID("foo").
-      WithClientSecret("bar").
-      WithLogger(someLogger{})
-  )
+  // or load from another source or directly
+  client, _ = kinde.New(context.TODO(), &kinde.ClientOptions{
+    Domain:       "https://example.kinde.com",
+    Audience:     "https://example.kinde.com/api",
+    ClientID:     "clientidclientidclientidclientid",
+    ClientSecret: "clientsecretclientsecretclientsecretclientsecret",
+  })
+
+  apis, _ := client.GetAPIs(context.TODO(), nil)
 }
 ```
 

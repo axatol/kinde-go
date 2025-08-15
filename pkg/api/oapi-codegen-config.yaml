@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/oapi-codegen/oapi-codegen/HEAD/configuration-schema.json
+package: api
+output: client.gen.go
+generate:
+  models: true
+  client: true
+
+compatibility:
+  always-prefix-enum-values: true
+
+output-options:
+  skip-prune: true
+  name-normalizer: ToCamelCaseWithInitialisms
+  response-type-suffix: Resp
+  additional-initialisms:
+    - API
+  overlay:
+    path: ./oapi-overlay.yaml
+    strict: true
