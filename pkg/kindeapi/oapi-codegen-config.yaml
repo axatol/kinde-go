@@ -3,6 +3,7 @@ package: kindeapi
 output: client.gen.go
 generate:
   client: true
+  models: true
 
 compatibility:
   always-prefix-enum-values: true
@@ -12,7 +13,16 @@ output-options:
   name-normalizer: ToCamelCaseWithInitialisms
   response-type-suffix: Result
   additional-initialisms:
-    - API
+    - ACS
+    - APIs
+    - HSL
+    - IDP
+    - IDs
+    - SAML
+    - SPA
+    - SVG
+    - URIs
+    - URLs
   overlay:
     path: ./oapi-overlay.yaml
     strict: true

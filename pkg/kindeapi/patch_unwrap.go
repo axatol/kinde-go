@@ -96,11 +96,11 @@ func (r RotateAPIKeyResult) Unwrap() (*RotateAPIKeyResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r GetAPIsResult) Unwrap() (*GetApisResponse, error) {
+func (r GetAPIsResult) Unwrap() (*GetAPIsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r AddAPIsResult) Unwrap() (*CreateApisResponse, error) {
+func (r AddAPIsResult) Unwrap() (*CreateAPIsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
@@ -156,7 +156,7 @@ func (r DeleteLogoutURLsResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetLogoutURLsResult) Unwrap() (*LogoutRedirectUrls, error) {
+func (r GetLogoutURLsResult) Unwrap() (*LogoutRedirectURLs, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
@@ -172,7 +172,7 @@ func (r DeleteCallbackURLsResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r GetCallbackURLsResult) Unwrap() (*RedirectCallbackUrls, error) {
+func (r GetCallbackURLsResult) Unwrap() (*RedirectCallbackURLs, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
