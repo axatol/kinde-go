@@ -1,8 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/oapi-codegen/oapi-codegen/HEAD/configuration-schema.json
-package: api
+package: kindeapi
 output: client.gen.go
 generate:
-  models: true
   client: true
 
 compatibility:
@@ -11,7 +10,7 @@ compatibility:
 output-options:
   skip-prune: true
   name-normalizer: ToCamelCaseWithInitialisms
-  response-type-suffix: Resp
+  response-type-suffix: Result
   additional-initialisms:
     - API
   overlay:

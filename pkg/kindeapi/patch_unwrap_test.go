@@ -1,9 +1,9 @@
-package api_test
+package kindeapi_test
 
 import (
 	"testing"
 
-	"github.com/axatol/kinde-go/pkg/api"
+	api "github.com/axatol/kinde-go/pkg/kindeapi"
 	"github.com/stretchr/testify/assert"
 )
 

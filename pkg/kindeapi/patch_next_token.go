@@ -1,97 +1,97 @@
-package api
+package kindeapi
 
-func (r GetAPIsResp) NextToken() *string {
+func (r GetAPIsResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}
 	return nil
 }
 
-func (r GetApplicationsResp) NextToken() *string {
+func (r GetApplicationsResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}
 	return nil
 }
 
-func (r GetEnvironmentFeatureFlagsResp) NextToken() *string {
+func (r GetEnvironmentFeatureFlagsResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}
 	return nil
 }
 
-func (r GetOrganizationUsersResp) NextToken() *string {
+func (r GetOrganizationUsersResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}
 	return nil
 }
 
-func (r GetOrganizationsResp) NextToken() *string {
+func (r GetOrganizationsResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}
 	return nil
 }
 
-func (r GetOrganizationUserRolesResp) NextToken() *string {
+func (r GetOrganizationUserRolesResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}
 	return nil
 }
 
-func (r GetPermissionsResp) NextToken() *string {
+func (r GetPermissionsResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}
 	return nil
 }
 
-func (r GetApplicationPropertyValuesResp) NextToken() *string {
+func (r GetApplicationPropertyValuesResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}
 	return nil
 }
 
-func (r GetOrganizationPropertyValuesResp) NextToken() *string {
+func (r GetOrganizationPropertyValuesResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}
 	return nil
 }
 
-func (r GetUserPropertyValuesResp) NextToken() *string {
+func (r GetUserPropertyValuesResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}
 	return nil
 }
 
-func (r GetRolesResp) NextToken() *string {
+func (r GetRolesResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}
 	return nil
 }
 
-func (r GetSubscribersResp) NextToken() *string {
+func (r GetSubscribersResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}
 	return nil
 }
 
-func (r GetRolePermissionsResp) NextToken() *string {
+func (r GetRolePermissionsResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}
 	return nil
 }
 
-func (r GetUsersResp) NextToken() *string {
+func (r GetUsersResult) NextToken() *string {
 	if r.JSON200 != nil && r.JSON200.NextToken != nil {
 		return r.JSON200.NextToken
 	}

@@ -1,4 +1,4 @@
-package api
+package kindeapi
 
 import (
 	"fmt"
@@ -72,642 +72,642 @@ func coalesceResponse[T any](ok *T, errs ...any) (*T, error) {
 	return ok, nil
 }
 
-func (r GetAPIKeysResp) Unwrap() (*GetAPIKeysResponse, error) {
+func (r GetAPIKeysResult) Unwrap() (*GetAPIKeysResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r CreateAPIKeyResp) Unwrap() (*CreateAPIKeyResponse, error) {
+func (r CreateAPIKeyResult) Unwrap() (*CreateAPIKeyResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r VerifyAPIKeyResp) Unwrap() (*VerifyAPIKeyResponse, error) {
+func (r VerifyAPIKeyResult) Unwrap() (*VerifyAPIKeyResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON401, r.JSON429)
 }
 
-func (r DeleteAPIKeyResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteAPIKeyResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r GetAPIKeyResp) Unwrap() (*GetAPIKeyResponse, error) {
+func (r GetAPIKeyResult) Unwrap() (*GetAPIKeyResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r RotateAPIKeyResp) Unwrap() (*RotateAPIKeyResponse, error) {
+func (r RotateAPIKeyResult) Unwrap() (*RotateAPIKeyResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r GetAPIsResp) Unwrap() (*GetApisResponse, error) {
+func (r GetAPIsResult) Unwrap() (*GetApisResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r AddAPIsResp) Unwrap() (*CreateApisResponse, error) {
+func (r AddAPIsResult) Unwrap() (*CreateApisResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteAPIResp) Unwrap() (*DeleteAPIResponse, error) {
+func (r DeleteAPIResult) Unwrap() (*DeleteAPIResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetAPIResp) Unwrap() (*GetAPIResponse, error) {
+func (r GetAPIResult) Unwrap() (*GetAPIResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r UpdateAPIApplicationsResp) Unwrap() (*AuthorizeAppAPIResponse, error) {
+func (r UpdateAPIApplicationsResult) Unwrap() (*AuthorizeAppAPIResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteAPIAppliationScopeResp) Unwrap() error {
+func (r DeleteAPIAppliationScopeResult) Unwrap() error {
 	return coalesceErrors(nil, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r AddAPIApplicationScopeResp) Unwrap() error {
+func (r AddAPIApplicationScopeResult) Unwrap() error {
 	return coalesceErrors(r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetAPIScopesResp) Unwrap() (*GetAPIScopesResponse, error) {
+func (r GetAPIScopesResult) Unwrap() (*GetAPIScopesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r AddAPIScopeResp) Unwrap() (*CreateAPIScopesResponse, error) {
+func (r AddAPIScopeResult) Unwrap() (*CreateAPIScopesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteAPIScopeResp) Unwrap() error {
+func (r DeleteAPIScopeResult) Unwrap() error {
 	return coalesceErrors(r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetAPIScopeResp) Unwrap() (*GetAPIScopeResponse, error) {
+func (r GetAPIScopeResult) Unwrap() (*GetAPIScopeResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r UpdateAPIScopeResp) Unwrap() error {
+func (r UpdateAPIScopeResult) Unwrap() error {
 	return coalesceErrors(r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetApplicationsResp) Unwrap() (*GetApplicationsResponse, error) {
+func (r GetApplicationsResult) Unwrap() (*GetApplicationsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r CreateApplicationResp) Unwrap() (*CreateApplicationResponse, error) {
+func (r CreateApplicationResult) Unwrap() (*CreateApplicationResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteLogoutURLsResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteLogoutURLsResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetLogoutURLsResp) Unwrap() (*LogoutRedirectUrls, error) {
+func (r GetLogoutURLsResult) Unwrap() (*LogoutRedirectUrls, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r AddLogoutRedirectURLsResp) Unwrap() (*SuccessResponse, error) {
+func (r AddLogoutRedirectURLsResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r ReplaceLogoutRedirectURLsResp) Unwrap() (*SuccessResponse, error) {
+func (r ReplaceLogoutRedirectURLsResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteCallbackURLsResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteCallbackURLsResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r GetCallbackURLsResp) Unwrap() (*RedirectCallbackUrls, error) {
+func (r GetCallbackURLsResult) Unwrap() (*RedirectCallbackUrls, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r AddRedirectCallbackURLsResp) Unwrap() (*SuccessResponse, error) {
+func (r AddRedirectCallbackURLsResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r ReplaceRedirectCallbackURLsResp) Unwrap() (*SuccessResponse, error) {
+func (r ReplaceRedirectCallbackURLsResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r DeleteApplicationResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteApplicationResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetApplicationResp) Unwrap() (*GetApplicationResponse, error) {
+func (r GetApplicationResult) Unwrap() (*GetApplicationResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r UpdateApplicationResp) Unwrap() error {
+func (r UpdateApplicationResult) Unwrap() error {
 	return coalesceErrors(r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetApplicationConnectionsResp) Unwrap() (*GetConnectionsResponse, error) {
+func (r GetApplicationConnectionsResult) Unwrap() (*GetConnectionsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r RemoveConnectionResp) Unwrap() (*SuccessResponse, error) {
+func (r RemoveConnectionResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r EnableConnectionResp) Unwrap() error {
+func (r EnableConnectionResult) Unwrap() error {
 	return coalesceErrors(r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetApplicationPropertyValuesResp) Unwrap() (*GetPropertyValuesResponse, error) {
+func (r GetApplicationPropertyValuesResult) Unwrap() (*GetPropertyValuesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r UpdateApplicationsPropertyResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateApplicationsPropertyResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r UpdateApplicationTokensResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateApplicationTokensResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetBillingAgreementsResp) Unwrap() (*GetBillingAgreementsResponse, error) {
+func (r GetBillingAgreementsResult) Unwrap() (*GetBillingAgreementsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r CreateBillingAgreementResp) Unwrap() (*SuccessResponse, error) {
+func (r CreateBillingAgreementResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetBillingEntitlementsResp) Unwrap() (*GetBillingEntitlementsResponse, error) {
+func (r GetBillingEntitlementsResult) Unwrap() (*GetBillingEntitlementsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r CreateMeterUsageRecordResp) Unwrap() (*CreateMeterUsageRecordResponse, error) {
+func (r CreateMeterUsageRecordResult) Unwrap() (*CreateMeterUsageRecordResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetBusinessResp) Unwrap() (*GetBusinessResponse, error) {
+func (r GetBusinessResult) Unwrap() (*GetBusinessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r UpdateBusinessResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateBusinessResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetConnectedAppAuthURLResp) Unwrap() (*ConnectedAppsAuthURL, error) {
+func (r GetConnectedAppAuthURLResult) Unwrap() (*ConnectedAppsAuthURL, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON404)
 }
 
-func (r RevokeConnectedAppTokenResp) Unwrap() (*SuccessResponse, error) {
+func (r RevokeConnectedAppTokenResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r GetConnectedAppTokenResp) Unwrap() (*ConnectedAppsAccessToken, error) {
+func (r GetConnectedAppTokenResult) Unwrap() (*ConnectedAppsAccessToken, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r GetConnectionsResp) Unwrap() (*GetConnectionsResponse, error) {
+func (r GetConnectionsResult) Unwrap() (*GetConnectionsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r CreateConnectionResp) Unwrap() (*CreateConnectionResponse, error) {
+func (r CreateConnectionResult) Unwrap() (*CreateConnectionResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteConnectionResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteConnectionResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r GetConnectionResp) Unwrap() (*Connection, error) {
+func (r GetConnectionResult) Unwrap() (*Connection, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r UpdateConnectionResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateConnectionResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r ReplaceConnectionResp) Unwrap() (*SuccessResponse, error) {
+func (r ReplaceConnectionResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r GetEnvironmentResp) Unwrap() (*GetEnvironmentResponse, error) {
+func (r GetEnvironmentResult) Unwrap() (*GetEnvironmentResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteEnvironmentFeatureFlagOverridesResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteEnvironmentFeatureFlagOverridesResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r GetEnvironmentFeatureFlagsResp) Unwrap() (*GetEnvironmentFeatureFlagsResponse, error) {
+func (r GetEnvironmentFeatureFlagsResult) Unwrap() (*GetEnvironmentFeatureFlagsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r DeleteEnvironmentFeatureFlagOverrideResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteEnvironmentFeatureFlagOverrideResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r UpdateEnvironmentFeatureFlagOverrideResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateEnvironmentFeatureFlagOverrideResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r ReadLogoResp) Unwrap() (*ReadEnvLogoResponse, error) {
+func (r ReadLogoResult) Unwrap() (*ReadEnvLogoResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteLogoResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteLogoResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r AddLogoResp) Unwrap() (*SuccessResponse, error) {
+func (r AddLogoResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetEnvironmentVariablesResp) Unwrap() (*GetEnvironmentVariablesResponse, error) {
+func (r GetEnvironmentVariablesResult) Unwrap() (*GetEnvironmentVariablesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r CreateEnvironmentVariableResp) Unwrap() (*CreateEnvironmentVariableResponse, error) {
+func (r CreateEnvironmentVariableResult) Unwrap() (*CreateEnvironmentVariableResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteEnvironmentVariableResp) Unwrap() (*DeleteEnvironmentVariableResponse, error) {
+func (r DeleteEnvironmentVariableResult) Unwrap() (*DeleteEnvironmentVariableResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetEnvironmentVariableResp) Unwrap() (*GetEnvironmentVariableResponse, error) {
+func (r GetEnvironmentVariableResult) Unwrap() (*GetEnvironmentVariableResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r UpdateEnvironmentVariableResp) Unwrap() (*UpdateEnvironmentVariableResponse, error) {
+func (r UpdateEnvironmentVariableResult) Unwrap() (*UpdateEnvironmentVariableResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetEventTypesResp) Unwrap() (*GetEventTypesResponse, error) {
+func (r GetEventTypesResult) Unwrap() (*GetEventTypesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r GetEventResp) Unwrap() (*GetEventResponse, error) {
+func (r GetEventResult) Unwrap() (*GetEventResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r CreateFeatureFlagResp) Unwrap() (*SuccessResponse, error) {
+func (r CreateFeatureFlagResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400)
 }
 
-func (r DeleteFeatureFlagResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteFeatureFlagResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r UpdateFeatureFlagResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateFeatureFlagResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r DeleteIdentityResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteIdentityResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r GetIdentityResp) Unwrap() (*Identity, error) {
+func (r GetIdentityResult) Unwrap() (*Identity, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r UpdateIdentityResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateIdentityResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r GetIndustriesResp) Unwrap() (*GetIndustriesResponse, error) {
+func (r GetIndustriesResult) Unwrap() (*GetIndustriesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r ReplaceMFAResp) Unwrap() (*SuccessResponse, error) {
+func (r ReplaceMFAResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetOrganizationResp) Unwrap() (*GetOrganizationResponse, error) {
+func (r GetOrganizationResult) Unwrap() (*GetOrganizationResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r CreateOrganizationResp) Unwrap() (*CreateOrganizationResponse, error) {
+func (r CreateOrganizationResult) Unwrap() (*CreateOrganizationResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteOrganizationResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteOrganizationResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r UpdateOrganizationResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateOrganizationResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteOrganizationHandleResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteOrganizationHandleResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r GetOrganizationsResp) Unwrap() (*GetOrganizationsResponse, error) {
+func (r GetOrganizationsResult) Unwrap() (*GetOrganizationsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteOrganizationFeatureFlagOverridesResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteOrganizationFeatureFlagOverridesResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r GetOrganizationFeatureFlagsResp) Unwrap() (*GetOrganizationFeatureFlagsResponse, error) {
+func (r GetOrganizationFeatureFlagsResult) Unwrap() (*GetOrganizationFeatureFlagsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r DeleteOrganizationFeatureFlagOverrideResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteOrganizationFeatureFlagOverrideResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r UpdateOrganizationFeatureFlagOverrideResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateOrganizationFeatureFlagOverrideResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r ReadOrganizationLogoResp) Unwrap() (*ReadLogoResponse, error) {
+func (r ReadOrganizationLogoResult) Unwrap() (*ReadLogoResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteOrganizationLogoResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteOrganizationLogoResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r AddOrganizationLogoResp) Unwrap() (*SuccessResponse, error) {
+func (r AddOrganizationLogoResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r ReplaceOrganizationMFAResp) Unwrap() (*SuccessResponse, error) {
+func (r ReplaceOrganizationMFAResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetOrganizationPropertyValuesResp) Unwrap() (*GetPropertyValuesResponse, error) {
+func (r GetOrganizationPropertyValuesResult) Unwrap() (*GetPropertyValuesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r UpdateOrganizationPropertiesResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateOrganizationPropertiesResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r UpdateOrganizationPropertyResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateOrganizationPropertyResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r UpdateOrganizationSessionsResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateOrganizationSessionsResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetOrganizationUsersResp) Unwrap() (*GetOrganizationUsersResponse, error) {
+func (r GetOrganizationUsersResult) Unwrap() (*GetOrganizationUsersResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r UpdateOrganizationUsersResp) Unwrap() (*UpdateOrganizationUsersResponse, error) {
+func (r UpdateOrganizationUsersResult) Unwrap() (*UpdateOrganizationUsersResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r AddOrganizationUsersResp) Unwrap() (*AddOrganizationUsersResponse, error) {
+func (r AddOrganizationUsersResult) Unwrap() (*AddOrganizationUsersResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r RemoveOrganizationUserResp) Unwrap() (*SuccessResponse, error) {
+func (r RemoveOrganizationUserResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r DeleteOrganizationUserAPIScopeResp) Unwrap() error {
+func (r DeleteOrganizationUserAPIScopeResult) Unwrap() error {
 	return coalesceErrors(r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r AddOrganizationUserAPIScopeResp) Unwrap() error {
+func (r AddOrganizationUserAPIScopeResult) Unwrap() error {
 	return coalesceErrors(r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r ResetOrgUserMFAAllResp) Unwrap() (*SuccessResponse, error) {
+func (r ResetOrgUserMFAAllResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r GetOrgUserMFAResp) Unwrap() (*GetUserMfaResponse, error) {
+func (r GetOrgUserMFAResult) Unwrap() (*GetUserMfaResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r ResetOrgUserMFAResp) Unwrap() (*SuccessResponse, error) {
+func (r ResetOrgUserMFAResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r GetOrganizationUserPermissionsResp) Unwrap() (*GetOrganizationsUserPermissionsResponse, error) {
+func (r GetOrganizationUserPermissionsResult) Unwrap() (*GetOrganizationsUserPermissionsResponse, error) {
 	return coalesceResponse(r.JSON200)
 }
 
-func (r CreateOrganizationUserPermissionResp) Unwrap() (*SuccessResponse, error) {
+func (r CreateOrganizationUserPermissionResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200)
 }
 
-func (r DeleteOrganizationUserPermissionResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteOrganizationUserPermissionResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r GetOrganizationUserRolesResp) Unwrap() (*GetOrganizationsUserRolesResponse, error) {
+func (r GetOrganizationUserRolesResult) Unwrap() (*GetOrganizationsUserRolesResponse, error) {
 	return coalesceResponse(r.JSON200)
 }
 
-func (r CreateOrganizationUserRoleResp) Unwrap() (*SuccessResponse, error) {
+func (r CreateOrganizationUserRoleResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200)
 }
 
-func (r DeleteOrganizationUserRoleResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteOrganizationUserRoleResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r GetOrganizationConnectionsResp) Unwrap() (*GetConnectionsResponse, error) {
+func (r GetOrganizationConnectionsResult) Unwrap() (*GetConnectionsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r RemoveOrgConnectionResp) Unwrap() (*SuccessResponse, error) {
+func (r RemoveOrgConnectionResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r EnableOrgConnectionResp) Unwrap() error {
+func (r EnableOrgConnectionResult) Unwrap() error {
 	return coalesceErrors(r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetPermissionsResp) Unwrap() (*GetPermissionsResponse, error) {
+func (r GetPermissionsResult) Unwrap() (*GetPermissionsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON403)
 }
 
-func (r CreatePermissionResp) Unwrap() (*SuccessResponse, error) {
+func (r CreatePermissionResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400, r.JSON403)
 }
 
-func (r DeletePermissionResp) Unwrap() (*SuccessResponse, error) {
+func (r DeletePermissionResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r UpdatePermissionsResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdatePermissionsResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r GetPropertiesResp) Unwrap() (*GetPropertiesResponse, error) {
+func (r GetPropertiesResult) Unwrap() (*GetPropertiesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r CreatePropertyResp) Unwrap() (*CreatePropertyResponse, error) {
+func (r CreatePropertyResult) Unwrap() (*CreatePropertyResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400)
 }
 
-func (r DeletePropertyResp) Unwrap() (*SuccessResponse, error) {
+func (r DeletePropertyResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r UpdatePropertyResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdatePropertyResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r GetCategoriesResp) Unwrap() (*GetCategoriesResponse, error) {
+func (r GetCategoriesResult) Unwrap() (*GetCategoriesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r CreateCategoryResp) Unwrap() (*CreateCategoryResponse, error) {
+func (r CreateCategoryResult) Unwrap() (*CreateCategoryResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400)
 }
 
-func (r UpdateCategoryResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateCategoryResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r GetRolesResp) Unwrap() (*GetRolesResponse, error) {
+func (r GetRolesResult) Unwrap() (*GetRolesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r CreateRoleResp) Unwrap() (*CreateRolesResponse, error) {
+func (r CreateRoleResult) Unwrap() (*CreateRolesResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteRoleResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteRoleResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetRoleResp) Unwrap() (*GetRoleResponse, error) {
+func (r GetRoleResult) Unwrap() (*GetRoleResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r UpdateRolesResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateRolesResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetRolePermissionsResp) Unwrap() (*RolePermissionsResponse, error) {
+func (r GetRolePermissionsResult) Unwrap() (*RolePermissionsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r UpdateRolePermissionsResp) Unwrap() (*UpdateRolePermissionsResponse, error) {
+func (r UpdateRolePermissionsResult) Unwrap() (*UpdateRolePermissionsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON403)
 }
 
-func (r RemoveRolePermissionResp) Unwrap() (*SuccessResponse, error) {
+func (r RemoveRolePermissionResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r GetRoleScopesResp) Unwrap() (*RoleScopesResponse, error) {
+func (r GetRoleScopesResult) Unwrap() (*RoleScopesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r AddRoleScopeResp) Unwrap() (*AddRoleScopeResponse, error) {
+func (r AddRoleScopeResult) Unwrap() (*AddRoleScopeResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteRoleScopeResp) Unwrap() (*DeleteRoleScopeResponse, error) {
+func (r DeleteRoleScopeResult) Unwrap() (*DeleteRoleScopeResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r SearchUsersResp) Unwrap() (*SearchUsersResponse, error) {
+func (r SearchUsersResult) Unwrap() (*SearchUsersResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetSubscribersResp) Unwrap() (*GetSubscribersResponse, error) {
+func (r GetSubscribersResult) Unwrap() (*GetSubscribersResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON403)
 }
 
-func (r CreateSubscriberResp) Unwrap() (*CreateSubscriberSuccessResponse, error) {
+func (r CreateSubscriberResult) Unwrap() (*CreateSubscriberSuccessResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400, r.JSON403)
 }
 
-func (r GetSubscriberResp) Unwrap() (*GetSubscriberResponse, error) {
+func (r GetSubscriberResult) Unwrap() (*GetSubscriberResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r GetTimezonesResp) Unwrap() (*GetTimezonesResponse, error) {
+func (r GetTimezonesResult) Unwrap() (*GetTimezonesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r DeleteUserResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteUserResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetUserDataResp) Unwrap() (*User, error) {
+func (r GetUserDataResult) Unwrap() (*User, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r UpdateUserResp) Unwrap() (*UpdateUserResponse, error) {
+func (r UpdateUserResult) Unwrap() (*UpdateUserResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r CreateUserResp) Unwrap() (*CreateUserResponse, error) {
+func (r CreateUserResult) Unwrap() (*CreateUserResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r GetUsersResp) Unwrap() (*UsersResponse, error) {
+func (r GetUsersResult) Unwrap() (*UsersResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON429)
 }
 
-func (r UpdateUserFeatureFlagOverrideResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateUserFeatureFlagOverrideResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r GetUserIdentitiesResp) Unwrap() (*GetIdentitiesResponse, error) {
+func (r GetUserIdentitiesResult) Unwrap() (*GetIdentitiesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r CreateUserIdentityResp) Unwrap() (*CreateIdentityResponse, error) {
+func (r CreateUserIdentityResult) Unwrap() (*CreateIdentityResponse, error) {
 	return coalesceResponse(r.JSON201, r.JSON400)
 }
 
-func (r ResetUsersMFAAllResp) Unwrap() (*SuccessResponse, error) {
+func (r ResetUsersMFAAllResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r GetUsersMFAResp) Unwrap() (*GetUserMfaResponse, error) {
+func (r GetUsersMFAResult) Unwrap() (*GetUserMfaResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r ResetUsersMFAResp) Unwrap() (*SuccessResponse, error) {
+func (r ResetUsersMFAResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r SetUserPasswordResp) Unwrap() (*SuccessResponse, error) {
+func (r SetUserPasswordResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r GetUserPropertyValuesResp) Unwrap() (*GetPropertyValuesResponse, error) {
+func (r GetUserPropertyValuesResult) Unwrap() (*GetPropertyValuesResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r UpdateUserPropertiesResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateUserPropertiesResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r UpdateUserPropertyResp) Unwrap() (*SuccessResponse, error) {
+func (r UpdateUserPropertyResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400)
 }
 
-func (r RefreshUserClaimsResp) Unwrap() (*SuccessResponse, error) {
+func (r RefreshUserClaimsResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r DeleteUserSessionsResp) Unwrap() (*SuccessResponse, error) {
+func (r DeleteUserSessionsResult) Unwrap() (*SuccessResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r GetUserSessionsResp) Unwrap() (*GetUserSessionsResponse, error) {
+func (r GetUserSessionsResult) Unwrap() (*GetUserSessionsResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403, r.JSON404, r.JSON429)
 }
 
-func (r GetWebHooksResp) Unwrap() (*GetWebhooksResponse, error) {
+func (r GetWebHooksResult) Unwrap() (*GetWebhooksResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r CreateWebHookResp) Unwrap() (*CreateWebhookResponse, error) {
+func (r CreateWebHookResult) Unwrap() (*CreateWebhookResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r DeleteWebHookResp) Unwrap() (*DeleteWebhookResponse, error) {
+func (r DeleteWebHookResult) Unwrap() (*DeleteWebhookResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }
 
-func (r UpdateWebHookResp) Unwrap() (*UpdateWebhookResponse, error) {
+func (r UpdateWebHookResult) Unwrap() (*UpdateWebhookResponse, error) {
 	return coalesceResponse(r.JSON200, r.JSON400, r.JSON403)
 }

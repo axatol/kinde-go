@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/axatol/kinde-go/pkg/api"
+	"github.com/axatol/kinde-go/pkg/kindeapi"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/clientcredentials"
 )
@@ -32,7 +32,7 @@ func ClientOptionsFromEnv() *ClientOptions {
 }
 
 type Client struct {
-	api.ClientWithResponsesInterface
+	kindeapi.ClientWithResponsesInterface
 	Client *http.Client
 }
 
@@ -59,9 +59,9 @@ func New(ctx context.Context, options *ClientOptions) (*Client, error) {
 
 	authenticatedClient := oauth2Config.Client(ctx)
 
-	apiClient, err := api.NewClientWithResponses(
+	apiClient, err := kindeapi.NewClientWithResponses(
 		options.Domain,
-		api.WithHTTPClient(oauth2Config.Client(ctx)),
+		kindeapi.WithHTTPClient(oauth2Config.Client(ctx)),
 	)
 
 	if err != nil {
