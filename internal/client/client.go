@@ -96,10 +96,9 @@ func (c *clientImpl) DoRequest(req *http.Request, result any) error {
 	res, err := c.client.Do(req)
 	if err != nil {
 		return RequestError{
-			Method:     req.Method,
-			Path:       req.URL.Path,
-			StatusCode: res.StatusCode,
-			Err:        fmt.Errorf("failed to execute request: %w", err),
+			Method: req.Method,
+			Path:   req.URL.Path,
+			Err:    fmt.Errorf("failed to execute request: %w", err),
 		}
 	}
 
