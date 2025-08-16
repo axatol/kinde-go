@@ -105,7 +105,7 @@ func (c *clientImpl) DoRequest(req *http.Request, result any) error {
 
 	c.logger.Logf("[Client.DoRequest] %s %s - response status: %d\n", req.Method, req.URL.Path, res.StatusCode)
 
-	defer res.Body.Close()
+	defer func() { _ = res.Body.Close() }()
 	raw, err := io.ReadAll(res.Body)
 	if err != nil {
 		return RequestError{

@@ -92,11 +92,11 @@ func (s *TestServer) Handle(t *testing.T, method, path string, handler TestServe
 
 		if handler == nil {
 			w.WriteHeader(http.StatusOK)
-			fmt.Fprint(w, `{"code":"OK"}`)
+			_, _ = fmt.Fprint(w, `{"code":"OK"}`)
 			return
 		}
 
-		defer r.Body.Close()
+		defer func() { _ = r.Body.Close() }()
 		raw, err := io.ReadAll(r.Body)
 		assert.NoError(t, err)
 		t.Logf("[TestServer.Handle] %s %s request body: %s\n", r.Method, r.URL.Path, string(raw))
@@ -105,7 +105,7 @@ func (s *TestServer) Handle(t *testing.T, method, path string, handler TestServe
 		t.Logf("[TestServer.Handle] %s %s response: %d - %s\n", r.Method, r.URL.Path, status, string(response))
 
 		w.WriteHeader(status)
-		fmt.Fprint(w, response)
+		_, _ = fmt.Fprint(w, response)
 	})
 }
 

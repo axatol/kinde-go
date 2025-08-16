@@ -66,7 +66,8 @@ func (t *OAuth2Transport) RefreshToken(ctx context.Context) error {
 
 	t.Logger.Logf("[OAuth2Transport.RefreshToken] %s - %s - response status: %d\n", http.MethodPost, tokenEndpoint, res.StatusCode)
 
-	defer res.Body.Close()
+	defer func() { _ = res.Body.Close() }()
+
 	raw, err := io.ReadAll(res.Body)
 	if err != nil {
 		return fmt.Errorf("failed to read response body: %w", err)
