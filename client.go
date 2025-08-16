@@ -27,3 +27,7 @@ func New(ctx context.Context, options *client.ClientOptions) Client {
 		Permissions:  permissions.New(client),
 	}
 }
+
+func NewClientOptions() *client.ClientOptions {
+	return client.NewClientOptions()
+}
